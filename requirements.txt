@@ -1,6 +1,0 @@
-streamlit
-pillow
-pytesseract
-pdfplumber
-google-generativeai
-fpdf
