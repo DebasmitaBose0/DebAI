@@ -1,0 +1,10 @@
+streamlit
+pillow
+easyocr
+pdfplumber
+ollama
+fpdf
+requests
+langdetect
+pytesseract
+numpy
