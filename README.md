@@ -16,7 +16,9 @@ Whether you need to extract text from scanned documents, analyze PDFs, or have a
 ### 🧠 **Dual-Core AI Engine**
 *   **Local Power**: Seamless integration with **Ollama** for running privacy-focused local models (e.g., Gemma, Llama 3).
 *   **Cloud Fallback**: Automatic fallback to **Google Gemini** when local models are unavailable.
-*   **Smart Language Detection**: Automatically detects **Hindi** and **Bengali** inputs and instructs the model to respond in the appropriate script.
+*   **Multilingual Support**: Languages can be detected properly in **Hindi**, **English**, and **Bengali**. 
+*   **Smart Response Logic**: If a user writes text in English but desires a response in another language (Hindi or Bengali), the model identifies the intended language and responds accordingly.
+*   **Future Roadmap**: More necessary changes are in progress, including broader implementation of Indian languages.
 
 ### 📄 **Advanced OCR Suite**
 *   **Image OCR**: Extract text from images (`.png`, `.jpg`, `.jpeg`) using **Tesseract**.
