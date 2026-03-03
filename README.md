@@ -105,6 +105,64 @@ The app will open in your default browser at `http://localhost:8501`.
 
 ---
 
+## 🏗️ Project Structure
+
+The project is organized as a single-module Streamlit application with a clean separation of concerns for OCR, AI client management, and UI rendering.
+
+```text
+.
+├── AI.py                # Main application entry point & logic
+├── LICENSE              # MIT License (2025)
+├── README.md            # Project documentation
+├── requirements.txt     # Python dependencies
+└── venv/                # Virtual environment (ignored by git)
+```
+
+### 🧬 Component Breakdown
+- **OCR Engine**: Utilizes `easyocr` (primary) and `pytesseract` (fallback) for multilingual text extraction.
+- **Preprocessing**: Custom `PIL` filters (Sharpen, Contrast, Grayscale) to enhance document readability.
+- **AI Clients**: Dynamic switching between `Ollama` (local) and `Gemini` (cloud API) using `importlib`.
+- **UI System**: Streamlit-based custom CSS injection for "Ultimate Glassmorphism" styling.
+
+---
+
+## 🔄 The DebAI Pipeline
+
+DebAI follows a linear data processing pipeline to ensure high accuracy and contextual awareness:
+
+1.  **Input Layer**: User uploads an Image (PNG/JPG) or PDF.
+2.  **Preprocessing**:
+    - *Images*: Grayscale conversion → 2.0x Contrast Enhancement → Double Sharpening → 1.1x Brightness.
+    - *PDFs*: Text extraction via `pdfplumber`.
+3.  **OCR Pass**:
+    - **Pass 1 (English)**: Initial scan to identify content.
+    - **Language Detection**: `langdetect` analyzes the initial text.
+    - **Pass 2 (Target Language)**: If Hindi or Bengali is detected, the OCR engine re-runs with specialized models.
+4.  **Context Injection**: The extracted text is added to the AI session state.
+5.  **Inference**: The AI model (Ollama or Gemini) processes the text based on user prompts.
+6.  **Output**: Response is rendered in the Glassmorphic UI with an option to **Export to PDF**.
+
+---
+
+## 🛡️ Basic FAQs
+
+**Q: Do I need an internet connection to use DebAI?**
+A: No! If you have **Ollama** installed and running locally with a model like `gemma:2b`, DebAI works completely offline. An internet connection is only required if you want to use the **Google Gemini** fallback.
+
+**Q: Which languages are supported for OCR?**
+A: DebAI currently has first-class support for **English, Hindi, and Bengali**. It uses automatic language detection to switch between these models seamlessly.
+
+**Q: My OCR results are blurry. How can I improve them?**
+A: DebAI includes built-in preprocessing, but for best results, ensure your source images are high-resolution (300 DPI+) and have good lighting.
+
+**Q: How do I save my chat session?**
+A: Use the **"Download Report"** button in the sidebar. This generates a professionally formatted PDF containing your entire conversation history.
+
+**Q: Is my data private?**
+A: Yes. When using the local **Ollama** mode, your documents and chats never leave your machine.
+
+---
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
